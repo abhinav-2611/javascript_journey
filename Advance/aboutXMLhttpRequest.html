@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Create the outer div
+        const myDiv = document.createElement('div');
+        myDiv.setAttribute('class', 'outerDiv');
+        Object.assign(myDiv.style, {
+            backgroundColor: 'grey',
+            height: '300px',
+            width: '300px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            borderRadius: '10%',
+            border: '2px solid',
+            boxShadow: '5px 5px 5px rgba(0, 0, 0, 0.5)',
+            padding: '10px',
+        });
+
+        // Create the first inner div
+        const innerDiv1 = document.createElement('div');
+        innerDiv1.setAttribute('class', 'innerDiv1');
+        Object.assign(innerDiv1.style, {
+            backgroundColor: 'white',
+            height: '70%',
+            width: '100%',
+            borderRadius: '11% 11% 0% 0%',
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center', 
+        });
+        myDiv.appendChild(innerDiv1);
+
+        
+        const innerDiv2 = document.createElement('div');
+        innerDiv2.setAttribute('class', 'innerDiv2');
+        Object.assign(innerDiv2.style, {
+            display: 'flex',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+            width: '100%',
+            height: '20%',
+            flexDirection: 'row',
+        });
+        myDiv.appendChild(innerDiv2);
+
+        
+        const h1 = document.createElement('h2');
+        const h2 = document.createElement('h2');
+        innerDiv2.appendChild(h1);
+        innerDiv2.appendChild(h2);
+
+        
+        document.body.appendChild(myDiv);
+
+        // Send request to API using XMLHttpRequest
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://api.github.com/users/abhinavsrivastava', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const responseGot = JSON.parse(xhr.responseText);
+                console.log(responseGot);
+
+                
+                h1.innerHTML = `Followers: ${responseGot.followers}`;
+                h2.innerHTML = `Following: ${responseGot.following}`;
+
+                
+                const imgMy = responseGot.avatar_url;
+                innerDiv1.style.backgroundImage = `url(${imgMy})`;
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>

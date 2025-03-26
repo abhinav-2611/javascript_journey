@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle on Click</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createCircle(x, y) {
+            // Create a circle element
+            const circle = document.createElement('div');
+            circle.style.position = 'absolute';
+            circle.style.height = '50px'; // Circle size
+            circle.style.width = '50px';
+            circle.style.borderRadius = '50%'; // Makes it a circle
+            circle.style.backgroundColor = '#fff'; // Circle color
+            circle.style.left = `${x - 25}px`; // Adjust for circle center
+            circle.style.top = `${y - 25}px`;
+            // circle.style.pointerEvents = 'none'; // Prevent interaction
+
+            // Append the circle to the body
+            document.body.appendChild(circle);
+
+            // Remove the circle after 1 second for cleanup
+            setTimeout(() => circle.remove(), 1000);
+        }
+
+        document.addEventListener('click', (e) => {
+            console.log(`x: ${e.clientX}, y: ${e.clientY}`);
+            createCircle(e.clientX, e.clientY);
+        });
+
+    </script>
+
+    <!--  Notes for Positioning the Circle (x - 25, y - 25):
+
+   - Circle size: 50px → Radius: 25px.
+   - e.clientX and e.clientY give the click position relative to the viewport.
+   - Subtract 25 to align the circle's center with the click position
+     (default left and top align to the top-left corner).
+
+     Before adjustment:
+  +-----------------------------+
+  |                             |
+  |       Click X,Y (*)         |
+  |         [Circle top-left]   |
+  |                             |
+  +-----------------------------+
+
+   After adjustment (correct):
+  +-----------------------------+
+  |                             |
+  |        Center of Circle (*) |
+  |           [Circle fits]     |
+  |                             |
+  +-----------------------------+
+
+
+     Notes for pointer-events: none:
+
+     - Purpose: Makes the circle non-interactive.
+     - Effect: Prevents the circle from blocking further clicks or triggering unwanted interactions.
+     - Use Case: Ensures mouse events pass through the circle to underlying elements (like the document). -->
+</body>
+
+</html>
+
+

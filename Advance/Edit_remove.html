@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <ul class="lists">
+        <li>java</li>
+     </ul>
+</body>
+<script>
+         // inerting new list 
+         const myFunc= (languageName) => {
+            const insertList= document.createElement('li'); 
+            insertList.appendChild( document.createTextNode(languageName))
+            document.querySelector('.lists').appendChild(insertList);
+             
+         }
+        
+         myFunc("python")
+         myFunc("ruby")
+
+     // editing element
+     const secondLan= document.querySelector('li:nth-child(2)')
+     const replaceLi= document.createElement('li');
+     replaceLi.textContent="mojo"; 
+     secondLan.replaceWith(replaceLi);// python replaced with mojo
+     
+     // editing element
+     const firstLan=document.querySelector('li:nth-child(1)');
+     firstLan.outerHTML='<li>javascript</li>' //java replaced with javascript
+
+    //  // removing element
+
+     const   RemoveFirstLan =document.querySelector('li:nth-child(1)');
+     RemoveFirstLan.remove(); // javascript removed
+
+
+
+
+</script>
+</html>

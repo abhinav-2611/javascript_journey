@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black;">
+         <div class="myClass" style="color: #fff;">
+             <div class="innerClass">Sunday</div>
+             <div class="innerClass">Monday</div>
+             <div class="innerClass">Tuesday</div>
+             <div class="innerClass">Wednesday</div>
+             <div class="innerClass">Thursday</div>
+             <div class="innerClass">Friday</div>
+             <div class="innerClass">Saturday</div>
+         </div>
+</body>
+<script>
+       const parent = document.querySelector(".myClass");
+        console.log(parent);
+        console.log(parent.children); // gives children in the form of Html collection
+        console.log(parent.children[0]);
+        console.log(parent.children[0].innerText);
+        console.log(""); // for line gap
+        for (let i = 0; i < parent.children.length; i++) {
+            
+            console.log(parent.children[i].innerHTML);
+            parent.children[i].style.backgroundColor="gray";
+            
+        }
+       console.log(parent.children[0].parentElement);
+       console.log(parent.children[0].nextElementSibling);
+       
+        
+
+</script>
+</html>
