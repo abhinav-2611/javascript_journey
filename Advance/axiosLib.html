@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>GITHUB DETAILS</h1>
+    <p id="det"></p>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        async function  getData() {
+            try {
+                
+                let res = await axios.get("https://api.github.com/users/abhinavsrivastava");
+                let data = res.data;
+
+                document.getElementById("det").innerText = `Username: ${data.login}\nURL: ${data.html_url}\nFollowers: ${data.followers}\nFollowing: ${data.following}`;
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                document.getElementById("det").innerText = "Error fetching data. Please try again!";
+            }
+        }
+
+       
+        getData();
+
+ /*Axios is a popular, promise-based HTTP client for making asynchronous requests from the browser and Node.js.
+  It allows you to send HTTP requests to REST endpoints and handle responses efficiently.
+
+✅ Why Use Axios?
+Easy to Use: Simplifies making HTTP requests compared to XMLHttpRequest.
+
+Promise-Based: Uses Promises, making it easy to handle asynchronous operations.
+
+Supports Interceptors: Allows you to modify requests or responses before they are handled.
+
+Error Handling: Provides better error handling and responses.
+
+JSON Support: Automatically converts response data to JSON.*/
+</script>
+    
+</body>
+</html>
