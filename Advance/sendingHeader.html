@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+     <script>
+          const Url = "https://api.github.com/users/abhinavsrivastava";
+
+     async function getData() {
+    try {
+        let config = {
+            headers: { 
+                Accept: "application/json"
+            }
+        };
+
+        let res = await axios.get(Url, config);
+        console.log(res.data); 
+
+    } catch (error) {
+        console.log("Error caught:", error);
+    }
+}
+
+getData();
+
+     </script>
+</body>
+</html>
