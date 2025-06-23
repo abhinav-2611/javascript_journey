@@ -4,8 +4,8 @@ let myName= "Abhinav Srivastava"  // this creates a primitive string. Strings cr
 
 let myAddress= new String("Raebareli")//this creates a String object. Strings created this way are objects, not primitives.
 
-console.log(myAddress);
-console.log(myName);
+console.log(typeof myAddress);
+console.log(typeof myName);
 
 console.log(myName == "Abhinav Srivastava"); // true : (value comparison)
 console.log(myAddress == "Raebareli");       // true : (value comparison)

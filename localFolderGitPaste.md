@@ -44,6 +44,10 @@
      ```
      git push -u origin main
      ```
+7. **This gives a summary of which files were changed and how many lines were added or deleted:**
+
+
+   git log --stat
 
 ---
 
